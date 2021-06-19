@@ -11,24 +11,27 @@ Ratings
     <h1 class="text-blue text-center">Add rating</h1>
 </div>
 <br>
-<form action="/ratings" method="post" class="text-center">
-    <input type="text" name="user" id="user" placeholder="Username..." class="form form-line" required>
-    <br><br>
-    <textarea name="fb" id="fb" placeholder="Feedback..." class="form form-line" required></textarea>
-    <br><br>
-    <label for="stars">Stars:</label>
-    <select name="stars" id="stars" class="form form-line">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-    </select>
-    <br><br>
-    <div class="section-dark">
-        <button type="submit" class="btn btn-blue-outline btn-submit">Add</button>
-    </div>
-</form>
+<input type="text" name="user" id="user" placeholder="Username..." class="form form-line" required>
+<br><br>
+<textarea name="fb" id="fb" placeholder="Feedback..." class="form form-line" required></textarea>
+<br><br>
+
+<span class="material-icons-round star" onclick="Go(1)" id="s1">star_rate</span>
+<span class="material-icons-round star" onclick="Go(2)" id="s2">star_rate</span>
+<span class="material-icons-round star" onclick="Go(3)" id="s3">star_rate</span>
+<span class="material-icons-round star" onclick="Go(4)" id="s4">star_rate</span>
+<span class="material-icons-round star" onclick="Go(5)" id="s5">star_rate</span>
+
+
+<br>
+
+<p>
+    Avg. star rating:
+    {% for unUsed in range(avg) %}
+    <span class="material-icons-round star-active">star_rate</span>
+    {% endfor %}
+</p>
+
 <br>
 {% if ratings|length == 0 %}
 
@@ -40,16 +43,23 @@ Ratings
 
 <div class="section-light">
     <i class="text-blue">{{ rating.username }}</i>
-    says 
+    says
     "<i class="text-blue">{{ rating.feedback }}</i>"
     and gives JOKey
-    <i class="text-blue">{{ rating.stars }}</i>
-    stars.
+    {% for unUsed in range(int(rating.stars)) %}
+    <span class="material-icons-round star-active">star_rate</span>
+    {% endfor %}
 </div>
 <br>
 
 {% endfor %}
 
 {% endif %}
+
+<script>
+    function Go(num) {
+        redirect('/addRating/s' + num + '/u' + document.getElementById('user').value + '/f' + document.getElementById('fb').value)
+    }
+</script>
 
 {% endblock %}

@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block t %}{% endblock %} &mdash; JOKey</title>
     <link rel="stylesheet" href="https://nispar2009.github.io/spectrum_stylr/General/Spectrum.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png')}}" type="image/x-icon">
     <script src="https://nispar2009.github.io/spectrum_stylr/Spectrum.js"></script>
 </head>
+
 <body>
     <header>
         <div class="nav-desktop bg-light">
             <a href="/" class="nav-desktop-link nav-desktop-item nav-desktop-brand">
-                <!-- <img src="{{ url_for('static', filename='bigFavicon.png')}}" alt="icon" style="height: 25px; width: 25px;"> -->
-                Home
+                <img src="{{ url_for('static', filename='bigFavicon.png')}}" alt="icon" style="height: 25px; width: 25px;">
+                JOKey
             </a>
-            <a href="/addJoke" class="nav-desktop-link nav-desktop-item">Add a Joke</a>
-            <a href="/ratings" class="nav-desktop-link nav-desktop-item">Ratings</a>
-            <a href="/blog" class="nav-desktop-link nav-desktop-item">Blog</a>
+            <div class="hover-all">
+                <a href="#" class="nav-desktop-link nav-desktop-item">...</a>
+                <div class="hover-content">
+                    <a href="/addJoke" class="hover-link">Add a Joke</a>
+                    <br>
+                    <a href="/ratings" class="hover-link">Ratings</a>
+                    <br>
+                    <a href="/blog" class="hover-link">Blog</a>
+                </div>
+            </div>
             <form action="/search" method="get" class="nav-desktop-item">
-                <input type="text" name="q" id="q" class="form form-line">
-                <button type="submit" class="btn btn-purple-outline btn-sm">Search</button>
-                <br><br>
+                <input type="text" name="q" id="q" class="form form-line form-search" placeholder="Enter search item...">
+                <button type="submit" class="btn btn-sm btn-left"><span class="material-icons-round">search</span></button>
             </form>
         </div>
         <div class="nav-mobile">
@@ -41,4 +50,5 @@
 
     {% block b %}{% endblock %}
 </body>
+
 </html>

@@ -8,3 +8,18 @@
     box-shadow: 0 12px 16px 0 lightgrey;
     padding: 50px;
 }
+
+.material-icons-round.star {
+    color: grey;
+    cursor: pointer;
+    font-size: 40px;
+}
+.material-icons-round.star:hover {color: gold;}
+
+.material-icons-round.star-active {color: gold;}
+
+.btn.btn-left {
+    margin-left: -55px;
+    background-color: transparent;
+}
+.form-search {padding-right: 40px;}

@@ -113,42 +113,43 @@ def updateJoke(id):
     else:
         return(render_template("updateJoke.html", joke = joke))
 
-@app.route("/ratings", methods = [
-    "GET",
-    "POST"
-])
+@app.route("/ratings")
 def ratings():
-    if request.method == "POST":
-        user = request.form["user"]
-        fb = request.form["fb"]
-        stars = request.form["stars"]
+    allRatings = Ratings.query.all()
+    total = 0
+    divisor = len(allRatings)
+    for item in allRatings:
+        total += int(item.stars)
 
-        newRating = Ratings(
-            username = user,
-            feedback = fb,
-            stars = stars
-        )
+    avg = total // divisor
+    return(render_template("ratings.html", avg = avg, ratings = allRatings, int=int))
 
-        try:
-            db.session.add(newRating)
-            db.session.commit()
-            return(redirect("/ratings"))
-        except:
-            return("There was an error.")
-    else:
-        return(render_template("ratings.html", ratings = Ratings.query.all()))
+@app.route("/addRating/s<int:s>/u<string:u>/f<string:f>")
+def addRating(s, u, f):
+    newRating = Ratings(
+        username = u,
+        feedback = f,
+        stars = s
+    )
 
-@app.route("/addBlogPost", methods = [
+    try:
+        db.session.add(newRating)
+        db.session.commit()
+        return(redirect("/ratings"))
+    except:
+        return("There was an error.")
+
+@app.route("/{{ url }}", methods = [
     "GET",
     "POST"
 ])
-def addBlogPost():
+def {{ function }}():
     if request.method == "POST":
         password = request.form["pw"]
         title = request.form["title"]
         content = request.form["content"]
 
-        if password == "77131477":
+        if password == "{{ password }}":
             newBlogPost = Blog(
                 title = title,
                 content = content
