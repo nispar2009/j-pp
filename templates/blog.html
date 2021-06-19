@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block t %}
+Blog
+{% endblock %}
+
+{% block b %}
+
+<div class="section-dark">
+    <h1 class="text-purple text-center">Welcome to our blog!</h1>
+</div>
+
+{% if posts|length == 0 %}
+
+<p>
+    There are no existing blog posts. Please contact the admin to request for one.
+</p>
+
+{% else %}
+<br><br>
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>
+            <button class="btn-green-outline btn" onclick="redirect('/blogPost/{{ post.id }}')">View</button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}

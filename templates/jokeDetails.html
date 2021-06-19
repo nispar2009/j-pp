@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block t %}
+Joke details
+{% endblock %}
+
+{% block b %}
+
+<div class="text-center">
+    <h3 class="text-orange">{{ joke.question }}</h3>
+    <p class="text-purple">{{ joke.answer }}</p>
+    <div class="section-light">
+        <button class="btn-blue-outline btn btn-sm" onclick="redirect('/updateJoke/{{ joke.id }}')">Update</button>
+        <button class="btn-red-outline btn btn-sm" onclick="redirect('/deleteJoke/{{ joke.id }}')">Delete</button>
+    </div>
+</div>
+
+{% endblock %}

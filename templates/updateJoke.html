@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block t %}
+Update joke
+{% endblock %}
+
+{% block b %}
+
+<div class="section-dark">
+    <h1 class="text-grey text-center">Update joke</h1>
+</div>
+
+<form action="/updateJoke/{{ joke.id }}" method="post" class="text-center">
+    <br>
+    <input type="text" name="question" id="question" value="{{ joke.question }}" placeholder="Question..." class="form form-line">
+    <br><br>
+    <input type="text" name="answer" id="answer" value="{{ joke.answer }}" placeholder="Answer..." class="form form-line">
+    <br><br>
+    <div class="section-dark">
+        <button type="submit" class="btn btn-grey-outline btn-submit">Update</button>
+    </div>
+</form>
+
+{% endblock %}

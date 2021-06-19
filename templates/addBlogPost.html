@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block t %}
+Add blog post
+{% endblock %}
+
+{% block b %}
+
+<div class="section-dark">
+    <h1 class="text-green text-center">Add Blog Post</h1>
+</div>
+
+<form action="/addBlogPost" method="post" class="text-center">
+    <br>
+    <input type="password" name="pw" id="pw" placeholder="Password..." class="form form-line" required>
+    <br><br>
+    <input type="text" name="title" id="title" placeholder="Title..." class="form form-line" required>
+    <br><br>
+    <textarea name="content" placeholder="Content..." id="content" class="form form-line" required></textarea>
+    <br><br>
+    <div class="section-dark">
+        <button type="submit" class="btn btn-green-outline btn-submit">Add</button>
+    </div>
+</form>
+
+{% endblock %}

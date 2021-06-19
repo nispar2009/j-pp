@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block t %}
+Add joke
+{% endblock %}
+
+{% block b %}
+
+<div class="section-dark">
+    <h1 class="text-orange text-center">Add a joke</h1>
+</div>
+
+<form action="/addJoke" method="post" class="text-center">
+    <br>
+    <input type="text" name="question" id="question" placeholder="Question..." class="form form-line" required>
+    <br><br>
+    <input type="text" name="answer" id="answer" placeholder="Answer..." class="form form-line" required>
+    <br><br>
+    <div class="section-dark">
+        <button type="submit" class="btn btn-submit btn-orange-outline">Add</button>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block t %}
+Search
+{% endblock %}
+
+{% block b %}
+
+<div class="section-dark">
+    <h1 class="text-green text-center">Search results for "{{ q }}"</h1>
+</div>
+
+<br>
+<table class="table-striped">
+    <tr>
+        <th>Joke</th>
+        <th>Actions</th>
+    </tr>
+    {% for joke in jokes %}
+    <tr>
+        <td>{{ joke.question }}</td>
+        <td>
+            <button class="btn-green-outline btn btn-sm" onclick="redirect('/jokeDetails/{{ joke.id }}')">View</button>
+            <button class="btn-blue-outline btn btn-sm" onclick="redirect('/updateJoke/{{ joke.id }}')">Update</button>
+            <button class="btn-red-outline btn btn-sm" onclick="redirect('/deleteJoke/{{ joke.id }}')">Delete</button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
