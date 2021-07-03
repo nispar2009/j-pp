@@ -121,8 +121,12 @@ def ratings():
     for item in allRatings:
         total += int(item.stars)
 
-    avg = total // divisor
-    return(render_template("ratings.html", avg = avg, ratings = allRatings, int=int))
+    if divisor != 0:
+        avg = total // divisor
+        return(render_template("ratings.html", avg = avg, ratings = allRatings, int=int))
+
+    else:
+        return(render_template("ratings.html", avg = 0, ratings = allRatings, int=int))
 
 @app.route("/addRating/s<int:s>/u<string:u>/f<string:f>")
 def addRating(s, u, f):
@@ -139,17 +143,17 @@ def addRating(s, u, f):
     except:
         return("There was an error.")
 
-@app.route("/{{ url }}", methods = [
+@app.route("/addBlogPost", methods = [
     "GET",
     "POST"
 ])
-def {{ function }}():
+def addBlogPost():
     if request.method == "POST":
         password = request.form["pw"]
         title = request.form["title"]
         content = request.form["content"]
 
-        if password == "{{ password }}":
+        if password == "Nisanth77131477!":
             newBlogPost = Blog(
                 title = title,
                 content = content
