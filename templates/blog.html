@@ -18,7 +18,7 @@ Blog
 
 {% else %}
 <br><br>
-<table class="table">
+<table class="table-striped">
     <tr>
         <th>Title</th>
         <th>Actions</th>
@@ -27,7 +27,7 @@ Blog
     <tr>
         <td>{{ post.title }}</td>
         <td>
-            <button class="btn-green-outline btn" onclick="redirect('/blogPost/{{ post.id }}')">View</button>
+            <button class="btn-green-outline btn btn-sm" onclick="redirect('/blogPost/{{ post.id }}')"><i class="material-icons-round">visibility</i></button>
         </td>
     </tr>
     {% endfor %}

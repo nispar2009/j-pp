@@ -6,35 +6,21 @@ Home
 
 {% block b %}
 
-<div class="section-dark">
-    <h1 class="text-yellow text-center">JOKey - Unlock Your Laughs!</h1>
+<div class="section-dark text-center">
+    <h1 class="text-blue"><img src="{{ url_for('static', filename='bigFavicon.png')}}" alt="icon" style="height: 50px; width: 50px;"> JOKey - Unlock Your Laughs!</h1>
 </div>
 
-{% if jokes|length == 0 %}
-
-<p>
-    There are no jokes. Click <a href="/addJoke" class="link">here</a> to add one.
-</p>
-
-{% else %}
-<br>
-<table class="table-striped">
-    <tr>
-        <th>Joke</th>
-        <th>Actions</th>
-    </tr>
-    {% for joke in jokes %}
-    <tr>
-        <td>{{ joke.question }}</td>
-        <td>
-            <button class="btn-green-outline btn btn-sm" onclick="redirect('/jokeDetails/{{ joke.id }}')">View</button>
-            <button class="btn-blue-outline btn btn-sm" onclick="redirect('/updateJoke/{{ joke.id }}')">Update</button>
-            <button class="btn-red-outline btn btn-sm" onclick="redirect('/deleteJoke/{{ joke.id }}')">Delete</button>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
-{% endif %}
+<div class="section-light">
+    <h2 class="text-purple">Jokes List</h2>
+    <p>The Jokes List contains all the jokes uploaded. From there, you can view, edit, and delete jokes.</p>
+</div>
+<div class="section-dark">
+    <h2 class="text-yellow">Ratings</h2>
+    <p>Our ratings page allows you to give us your valuable feedback. You can also check out the ratings before moving on to using JOKey.</p>
+</div>
+<div class="section-light">
+    <h2 class="text-purple">Blog</h2>
+    <p>Get the latest info from the JOKey Blog. All posts are directly made by the creator of JOKey.</p>
+</div>
 
 {% endblock %}

@@ -11,6 +11,13 @@ Search
 </div>
 
 <br>
+
+{% if jokes.count() == 0 %}
+
+<p>Oops! There seem to be no jokes matching your search. :(</p>
+
+{% else %}
+
 <table class="table-striped">
     <tr>
         <th>Joke</th>
@@ -27,5 +34,7 @@ Search
     </tr>
     {% endfor %}
 </table>
+
+{% endif %}
 
 {% endblock %}

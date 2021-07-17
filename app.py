@@ -55,7 +55,6 @@ class Blog (db.Model):
 def index():
     return(render_template(
         "index.html",
-        jokes = Jokes.query.all()
     ))
 
 @app.route("/addJoke", methods=[
@@ -78,6 +77,13 @@ def addJoke():
 
     else:
         return(render_template("addJoke.html"))
+
+@app.route("/jokes")
+def jokeList():
+    return(render_template(
+        "list.html",
+        jokes = Jokes.query.all()
+    ))
 
 @app.route("/jokeDetails/<int:id>")
 def jokeDetails(id):
@@ -143,17 +149,17 @@ def addRating(s, u, f):
     except:
         return("There was an error.")
 
-@app.route("/addBlogPost", methods = [
+@app.route("/{{ url }}", methods = [
     "GET",
     "POST"
 ])
-def addBlogPost():
+def {{ url }}():
     if request.method == "POST":
         password = request.form["pw"]
         title = request.form["title"]
         content = request.form["content"]
 
-        if password == "Nisanth77131477!":
+        if password == "{{ password }}!":
             newBlogPost = Blog(
                 title = title,
                 content = content
