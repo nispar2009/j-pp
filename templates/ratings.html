@@ -6,22 +6,29 @@ Ratings
 
 {% block b %}
 
+<form action="" method="post">
 
-<div class="section-dark">
-    <h1 class="text-blue text-center">Add rating</h1>
-</div>
-<br>
-<input type="text" name="user" id="user" placeholder="Username..." class="form form-line">
-<br><br>
-<textarea name="fb" id="fb" placeholder="Feedback..." class="form form-line"></textarea>
-<br><br>
+    <div class="section-dark">
+        <h1 class="text-blue text-center">Add rating</h1>
+    </div>
+    <br>
+    <input type="text" name="user" id="user" placeholder="Username..." class="form form-line">
+    <br><br>
+    <textarea name="fb" id="fb" placeholder="Feedback..." class="form form-line"></textarea>
+    <br><br>
 
-<span class="material-icons-round star" onclick="Go(1)" id="s1">star_rate</span>
-<span class="material-icons-round star" onclick="Go(2)" id="s2">star_rate</span>
-<span class="material-icons-round star" onclick="Go(3)" id="s3">star_rate</span>
-<span class="material-icons-round star" onclick="Go(4)" id="s4">star_rate</span>
-<span class="material-icons-round star" onclick="Go(5)" id="s5">star_rate</span>
+    <button type="submit" formaction="/addRating1" class="btn-none"><span
+            class="material-icons-round">star_rate</span></button type="submit" formaction="/addRating">
+    <button type="submit" formaction="/addRating2" class="btn-none"><span
+            class="material-icons-round">star_rate</span></button type="submit" formaction="/addRating">
+    <button type="submit" formaction="/addRating3" class="btn-none"><span
+            class="material-icons-round">star_rate</span></button type="submit" formaction="/addRating">
+    <button type="submit" formaction="/addRating4" class="btn-none"><span
+            class="material-icons-round">star_rate</span></button type="submit" formaction="/addRating">
+    <button type="submit" formaction="/addRating5" class="btn-none"><span
+            class="material-icons-round">star_rate</span></button>
 
+</form>
 
 <br>
 
@@ -56,11 +63,5 @@ Ratings
 {% endfor %}
 
 {% endif %}
-
-<script>
-    function Go(num) {
-        redirect('/addRating/s' + num + '/u' + document.getElementById('user').value + '/f' + document.getElementById('fb').value)
-    }
-</script>
 
 {% endblock %}

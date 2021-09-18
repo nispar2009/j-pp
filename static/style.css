@@ -9,12 +9,17 @@
     padding: 50px;
 }
 
+.btn-none {
+    background-color: transparent;
+    color: grey;
+}
+.btn-none:hover {color: gold;}
+
 .material-icons-round.star {
     color: grey;
     cursor: pointer;
     font-size: 40px;
 }
-.material-icons-round.star:hover {color: gold;}
 
 .material-icons-round.star-active {color: gold;}
 

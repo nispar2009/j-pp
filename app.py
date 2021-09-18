@@ -19,6 +19,7 @@ class Jokes (db.Model):
         nullable = False
     )
 
+
 class Ratings (db.Model):
     id = db.Column(
         db.Integer,
@@ -71,7 +72,7 @@ def addJoke():
         try:
             db.session.add(newJoke)
             db.session.commit()
-            return(redirect("/"))
+            return(redirect("/jokes"))
         except:
             return("There was an error.")
 
@@ -96,7 +97,7 @@ def deleteJoke(id):
     try:
         db.session.delete(joke)
         db.session.commit()
-        return(redirect("/"))
+        return(redirect("/jokes"))
     except:
         return("There was an error.")
 
@@ -112,7 +113,7 @@ def updateJoke(id):
 
         try:
             db.session.commit()
-            return(redirect("/"))
+            return(redirect("/jokes"))
         except:
             return("There was an error.")
 
@@ -134,12 +135,14 @@ def ratings():
     else:
         return(render_template("ratings.html", avg = 0, ratings = allRatings, int=int))
 
-@app.route("/addRating/s<int:s>/u<string:u>/f<string:f>")
-def addRating(s, u, f):
+@app.route("/addRating<int:rate>")
+def addRating(rate):
+    u = request.form["user"]
+    f = request.form["fb"]
     newRating = Ratings(
         username = u,
         feedback = f,
-        stars = s
+        stars = rate
     )
 
     try:
