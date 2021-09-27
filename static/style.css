@@ -12,6 +12,8 @@
 .btn-none {
     background-color: transparent;
     color: grey;
+    border: none;
+    cursor: pointer;
 }
 .btn-none:hover {color: gold;}
 

@@ -135,7 +135,7 @@ def ratings():
     else:
         return(render_template("ratings.html", avg = 0, ratings = allRatings, int=int))
 
-@app.route("/addRating<int:rate>")
+@app.route("/addRating<int:rate>", methods=["POST", "GET"])
 def addRating(rate):
     u = request.form["user"]
     f = request.form["fb"]
@@ -156,13 +156,13 @@ def addRating(rate):
     "GET",
     "POST"
 ])
-def {{ url }}():
+def {{ func }}():
     if request.method == "POST":
         password = request.form["pw"]
         title = request.form["title"]
         content = request.form["content"]
 
-        if password == "{{ password }}!":
+        if password == "{{ password }}":
             newBlogPost = Blog(
                 title = title,
                 content = content
